@@ -1,5 +1,5 @@
 d = 5;         // thickness
-lendown = 50;  // length of main bar
+lendown = 60;  // length of main bar
 lentop = 85;   // length of upper bar
 radius = 27;   // radius of lower circle
 screw=2;       // screw size
@@ -7,6 +7,8 @@ screw=2;       // screw size
 bs = d*5;           // backpane width
 bsh = lendown*0.9;  // backpane height
 bsd = d;            // backpane thickness
+
+buffer = 1;
 
 $fn=40;
 
@@ -33,7 +35,7 @@ rotate(30,[0,0,1]) {
 translate([0,radius,0])
 rotate(90,[0,0,1]) {
 	intersection(){
-	// full ring
+	// full ring  
 	rotate_extrude(convexity = 10,$fn=40)
 	translate([radius, 0, 0])
 	circle(r = d);
@@ -53,15 +55,15 @@ difference() {
 	minkowski() {
 		cube([bsh,bsd,bs]);
 		rotate(-90,[1,0,0])
-		cylinder(r=screw,h=1);
+		sphere(r=screw);
 	}
 	union() {
-		translate([bsh*0.9,-1,bs*0.9])
+		translate([bsh*0.5,-(screw+buffer),bs*0.9])
 		rotate(-90,[1,0,0])
-		cylinder(bsd*2,r=screw);
+		cylinder(bsd + 2*(screw+buffer),r=screw);
 
-		translate([bsh*0.9,-1,bs*0.1])
+		translate([bsh*0.5,-(screw+buffer),bs*0.1])
 		rotate(-90,[1,0,0])
-		cylinder(bsd*2,r=screw);
+		cylinder(bsd + 2*(screw+buffer),r=screw);
 	}
 }
