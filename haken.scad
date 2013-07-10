@@ -2,7 +2,7 @@ d = 5;         // thickness
 lendown = 60;  // length of main bar
 lentop = 85;   // length of upper bar
 radius = 27;   // radius of lower circle
-screw=2;       // screw size
+screw=3;       // screw size
 
 bs = d*5;           // backpane width
 bsh = lendown*0.9;  // backpane height
@@ -58,11 +58,19 @@ difference() {
 		sphere(r=screw);
 	}
 	union() {
-		translate([bsh*0.5,-(screw+buffer),bs*0.9])
+		translate([bsh*0.5,-(screw+buffer),bs*0.85])
+		rotate(-90,[1,0,0])
+		cylinder(bsd + 2*(screw+buffer),r=screw*0.5);
+
+		translate([bsh*0.5,screw,bs*0.85])
 		rotate(-90,[1,0,0])
 		cylinder(bsd + 2*(screw+buffer),r=screw);
 
-		translate([bsh*0.5,-(screw+buffer),bs*0.1])
+		translate([bsh*0.5,-(screw+buffer),bs*0.15])
+		rotate(-90,[1,0,0])
+		cylinder(bsd + 2*(screw+buffer),r=screw*0.5);
+
+		translate([bsh*0.5,screw,bs*0.15])
 		rotate(-90,[1,0,0])
 		cylinder(bsd + 2*(screw+buffer),r=screw);
 	}
