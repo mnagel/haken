@@ -16,7 +16,7 @@ $fn=40;
 hull() {
 	sphere(d);
 	translate([lendown, 0,0]) {
-		sphere(d);	
+		sphere(d);
 	}
 }
 
@@ -35,11 +35,11 @@ rotate(30,[0,0,1]) {
 translate([0,radius,0])
 rotate(90,[0,0,1]) {
 	intersection(){
-	// full ring  
+	// full ring
 	rotate_extrude(convexity = 10,$fn=40)
 	translate([radius, 0, 0])
 	circle(r = d);
-	
+
 	// take one half only
 	translate([-500, 0, -500])
 	cube(1000,1000,1000);
