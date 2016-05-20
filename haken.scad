@@ -58,19 +58,23 @@ difference() {
 		sphere(r=screw);
 	}
 	union() {
-		translate([bsh*0.5,-(screw+buffer),bs*0.85])
+        // mounting hole 1 core
+		translate([bsh*0.93,-(screw+buffer),bs*0.85])
 		rotate(-90,[1,0,0])
 		cylinder(bsd + 2*(screw+buffer),r=screw*0.5);
 
-		translate([bsh*0.5,screw,bs*0.85])
+        // mounting hole 1 counterbore
+		translate([bsh*0.93,screw,bs*0.85])
 		rotate(-90,[1,0,0])
 		cylinder(bsd + 2*(screw+buffer),r=screw);
 
-		translate([bsh*0.5,-(screw+buffer),bs*0.15])
+        // mounting hole 2 core
+		translate([bsh*0.07,-(screw+buffer),bs*0.15])
 		rotate(-90,[1,0,0])
 		cylinder(bsd + 2*(screw+buffer),r=screw*0.5);
 
-		translate([bsh*0.5,screw,bs*0.15])
+        // mounting hole2 counterbore
+		translate([bsh*0.07,screw,bs*0.15])
 		rotate(-90,[1,0,0])
 		cylinder(bsd + 2*(screw+buffer),r=screw);
 	}
